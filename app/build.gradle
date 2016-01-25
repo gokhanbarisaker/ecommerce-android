@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.2'
+
+    defaultConfig {
+        applicationId "io.github.gokhanbarisaker.ecommerce"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        prod {
+
+        }
+        mock {
+
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
+
+    // Always show the result of every unit test, even if it passes.
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile "junit:junit:$rootProject.ext.version.junit"
+    testCompile "org.mockito:mockito-core:$rootProject.ext.version.mockito"
+
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.version.espresso") {
+        exclude module: 'espresso-idling-resource'
+        exclude group: 'com.android.support'
+    }
+    compile("com.android.support.test.espresso:espresso-contrib:$rootProject.ext.version.espresso") {
+        exclude module: 'espresso-idling-resource'
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile("com.android.support.test:runner:$rootProject.ext.version.test") {
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile("com.android.support.test:rules:$rootProject.ext.version.test") {
+        exclude group: 'com.android.support'
+    }
+
+    compile("com.gokhanbarisaker:osapis:0.6.0") {
+        exclude group: 'com.google.android.gms'
+    }
+    compile "com.android.support.test.espresso:espresso-idling-resource:$rootProject.ext.version.espresso"
+    compile "com.android.support:design:$rootProject.ext.version.support"
+    compile "com.android.support:appcompat-v7:$rootProject.ext.version.support"
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.version.support"
+    compile "com.google.android.gms:play-services-maps:$rootProject.ext.version.playServices"
+    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.version.okhttp"
+    compile "com.squareup.picasso:picasso:$rootProject.ext.version.picasso"
+    compile "com.squareup.retrofit:retrofit:$rootProject.ext.version.retrofit"
+    compile "com.squareup.retrofit:converter-gson:$rootProject.ext.version.retrofit"
+    compile "com.squareup.retrofit:adapter-rxjava:$rootProject.ext.version.retrofit"
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile "io.reactivex:rxandroid:$rootProject.ext.version.rxandroid"
+    compile "io.reactivex:rxjava:$rootProject.ext.version.rxjava"
+    compile "com.android.support:support-v4:$rootProject.ext.version.support"
+    compile 'fr.avianey.com.viewpagerindicator:library:2.4.1@aar'
+    compile "com.android.support:palette-v7:$rootProject.ext.version.support"
+    compile "com.android.support:support-annotations:$rootProject.ext.version.support"
+
+
+
+
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+}

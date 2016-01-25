@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--TODO: Create palette with used colors-->
+    <color name="vibrant">#e24a15</color>
+    <color name="vibrant_light">#ffffff</color>
+    <color name="vibrant_dark">#1d1d1d</color>
+    <color name="muted">#3F51B5</color>
+    <color name="muted_light">#e2e2e2</color>
+    <color name="muted_dark">#1d1d1d</color>
+</resources>

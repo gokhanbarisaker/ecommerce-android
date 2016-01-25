@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="io.github.gokhanbarisaker.ecommerce.R" />
+
+        <import type="com.viewpagerindicator.PageIndicator" />
+
+        <import type="io.github.gokhanbarisaker.ecommerce.viewmodel.CatalogViewModel.Status" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="activity"
+            type="android.support.v7.app.AppCompatActivity" />
+
+        <variable
+            name="viewModel"
+            type="io.github.gokhanbarisaker.ecommerce.viewmodel.CatalogViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="io.github.gokhanbarisaker.ecommerce.activity.CatalogActivity">
+
+        <io.github.gokhanbarisaker.ecommerce.view.SwipeRefreshLayout
+            android:id="@+id/swiperefreshlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefresh="@{viewModel.onRefresh}"
+            app:refreshing="@{viewModel.status == Status.REFRESHING}">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:pageIndicator="@{(PageIndicator) activity.findViewById(R.id.pageindicator)}"
+                app:productOverviewItems="@{viewModel.products}" />
+        </io.github.gokhanbarisaker.ecommerce.view.SwipeRefreshLayout>
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/pageindicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="24dp"
+            app:fillColor="@color/muted_dark"
+            app:pageColor="@color/muted_light"
+            app:strokeWidth="0dp" />
+
+        <FrameLayout
+            android:id="@+id/progressview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/muted"
+            android:visibility="@{(viewModel.status == Status.LOADING) ? View.VISIBLE : View.GONE}">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
+    </FrameLayout>
+</layout>
