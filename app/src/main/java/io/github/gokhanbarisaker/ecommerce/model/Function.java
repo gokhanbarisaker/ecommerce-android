@@ -2,9 +2,9 @@ package io.github.gokhanbarisaker.ecommerce.model;
 
 /**
  * Created by gokhanbarisaker on 1/24/16.
- * <p/>
+ * <p>
  * Represents a function that accepts one argument and produces a result.
- * <p/>
+ * <p>
  * <p>This is a <a href="package-summary.html">functional interface</a>
  * backport clone whose functional method is {@link #apply(Object)}.
  *

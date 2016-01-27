@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="eCommerce" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/vibrant</item>
         <item name="colorPrimaryDark">@color/vibrant_dark</item>
@@ -10,6 +10,9 @@
         <item name="android:windowBackground">@color/muted_dark</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="eCommerce.Translucent" parent="eCommerce">
     </style>
 
 </resources>

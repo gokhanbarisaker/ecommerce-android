@@ -1,6 +1,7 @@
 package io.github.gokhanbarisaker.ecommerce.activity;
 
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -29,6 +30,10 @@ public class ProductActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            binding.imageview.setTransitionName(getResources().getString(R.string.transition_product));
+        }
 
         Product product = getIntent().getParcelableExtra(BUNDLE_PRODUCT);
         binding.setViewModel(new ProductViewModel(product));

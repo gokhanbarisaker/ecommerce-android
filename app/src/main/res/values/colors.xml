@@ -7,4 +7,6 @@
     <color name="muted">#3F51B5</color>
     <color name="muted_light">#e2e2e2</color>
     <color name="muted_dark">#1d1d1d</color>
+
+    <color name="muted_dark_ghost">#991d1d1d</color>
 </resources>

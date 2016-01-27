@@ -45,11 +45,11 @@ public class CatalogViewModel implements Cleanable, ProductOverviewAdapter.Liste
     }
 
     @Override
-    public void onProductOverviewClicked(Product product) {
+    public void onProductOverviewClicked(Product product, Object clickee) {
         Listener listener = this.listener;
 
         if (listener != null) {
-            listener.onProductOverviewClicked(product);
+            listener.onProductOverviewClicked(product, clickee);
         }
     }
 
@@ -129,6 +129,6 @@ public class CatalogViewModel implements Cleanable, ProductOverviewAdapter.Liste
     }
 
     public interface Listener {
-        void onProductOverviewClicked(Product product);
+        void onProductOverviewClicked(Product product, Object view);
     }
 }

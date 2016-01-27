@@ -27,7 +27,7 @@ public class ProductOverviewViewModel {
         Listener listener = this.listener;
 
         if (listener != null) {
-            listener.onProductOverviewClicked(product);
+            listener.onProductOverviewClicked(product, view);
         }
     }
 
@@ -46,6 +46,6 @@ public class ProductOverviewViewModel {
     // == Minions ==================================================================================
 
     public interface Listener {
-        void onProductOverviewClicked(Product product);
+        void onProductOverviewClicked(Product product, Object view);
     }
 }

@@ -55,9 +55,9 @@ public class ProductOverviewAdapter extends RecyclerView.Adapter<ProductOverview
     }
 
     @Override
-    public void onProductOverviewClicked(Product product) {
+    public void onProductOverviewClicked(Product product, Object clickee) {
         if (listener != null) {
-            listener.onProductOverviewClicked(product);
+            listener.onProductOverviewClicked(product, clickee);
         }
     }
 
@@ -80,7 +80,7 @@ public class ProductOverviewAdapter extends RecyclerView.Adapter<ProductOverview
     // == Minions ==================================================================================
 
     public interface Listener {
-        void onProductOverviewClicked(Product product);
+        void onProductOverviewClicked(Product product, Object clickee);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -14,7 +14,7 @@ import java.util.EnumSet;
 
 /**
  * Created by gokhanbarisaker on 1/13/15.
- * <p/>
+ * <p>
  * TODO: Implement for both vertical and horizontal direction. Currently only tested on Vertical
  */
 public abstract class DividerItemDecoration extends RecyclerView.ItemDecoration {
@@ -26,6 +26,7 @@ public abstract class DividerItemDecoration extends RecyclerView.ItemDecoration 
     // Divider thickness half in pixel
     private int dividerThicknessEdgeHalf;
     private int dividerThicknessInteriorHalf;
+
     public DividerItemDecoration(int dividerThicknessEdge, int dividerThicknessInterior) {
         setDividerThicknessEdge(dividerThicknessEdge);
         setDividerThicknessInterior(dividerThicknessInterior);

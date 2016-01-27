@@ -58,6 +58,7 @@ public class Application extends android.app.Application {
         return (directory == null) ? (null) : (new Cache(directory, size));
     }
 
+    // TODO: Check ContextCompat to access cache directories
     private File getDiskCacheDirectory(final String label) {
         File rootDirectory = getExternalCacheDir();
 

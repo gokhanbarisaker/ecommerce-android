@@ -1,8 +1,12 @@
 package io.github.gokhanbarisaker.ecommerce.activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -73,10 +77,23 @@ public class CatalogActivity extends AppCompatActivity implements CatalogViewMod
     // == External callbacks =======================================================================
 
     @Override
-    public void onProductOverviewClicked(Product product) {
-        Intent intent = new Intent(this, ProductActivity.class);
+    public void onProductOverviewClicked(Product product, Object clickee) {
+        View view = (View) clickee;
+        Context context = view.getContext();
+        Intent intent = new Intent(context, ProductActivity.class);
         intent.putExtra(ProductActivity.BUNDLE_PRODUCT, product);
 
-        startActivity(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            String transitionName, sharedElementName;
+            transitionName = sharedElementName = context.getResources().getString(R.string.transition_product);
+            ;
+
+            view.setTransitionName(transitionName);
+            //contextCompat???
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, view, sharedElementName);
+            context.startActivity(intent, options.toBundle());
+        } else {
+            context.startActivity(intent);
+        }
     }
 }

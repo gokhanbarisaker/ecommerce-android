@@ -5,4 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_viewdetails">View Details</string>
     <string name="label_price">%1$s%2$s</string>
+
+    <string name="transition_product">transition.product</string>
 </resources>
