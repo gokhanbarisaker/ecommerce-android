@@ -1,0 +1,18 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="io.github.gokhanbarisaker.ecommerce.viewmodel.ProductOverviewViewModel" />
+    </data>
+
+    <io.github.gokhanbarisaker.ecommerce.view.SquareImageView
+        android:id="@+id/imageview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/vibrant_light"
+        android:onClick="@{viewModel.onClick}"
+        app:imageUrl="@{viewModel.imageUrl}" />
+</layout>

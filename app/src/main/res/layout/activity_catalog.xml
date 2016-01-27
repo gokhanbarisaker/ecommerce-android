@@ -7,8 +7,6 @@
 
         <import type="io.github.gokhanbarisaker.ecommerce.R" />
 
-        <import type="com.viewpagerindicator.PageIndicator" />
-
         <import type="io.github.gokhanbarisaker.ecommerce.viewmodel.CatalogViewModel.Status" />
 
         <import type="android.view.View" />
@@ -34,23 +32,13 @@
             app:onRefresh="@{viewModel.onRefresh}"
             app:refreshing="@{viewModel.status == Status.REFRESHING}">
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:pageIndicator="@{(PageIndicator) activity.findViewById(R.id.pageindicator)}"
-                app:productOverviewItems="@{viewModel.products}" />
+                app:productOverviewItems="@{viewModel.products}"
+                app:productOverviewListener="@{viewModel}"/>
         </io.github.gokhanbarisaker.ecommerce.view.SwipeRefreshLayout>
-
-        <com.viewpagerindicator.CirclePageIndicator
-            android:id="@+id/pageindicator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="24dp"
-            app:fillColor="@color/muted_dark"
-            app:pageColor="@color/muted_light"
-            app:strokeWidth="0dp" />
 
         <FrameLayout
             android:id="@+id/progressview"

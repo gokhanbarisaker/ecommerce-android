@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 
 import java.util.List;
 
+import io.github.gokhanbarisaker.ecommerce.adapter.ProductOverviewAdapter;
 import io.github.gokhanbarisaker.ecommerce.model.Catalog;
 import io.github.gokhanbarisaker.ecommerce.model.Cleanable;
 import io.github.gokhanbarisaker.ecommerce.model.Product;
@@ -17,7 +18,7 @@ import rx.Subscription;
 /**
  * Created by gokhanbarisaker on 12/11/15.
  */
-public class CatalogViewModel implements Cleanable {
+public class CatalogViewModel implements Cleanable, ProductOverviewAdapter.Listener {
     // == Variables ================================================================================
 
     private static final String BUNDLE_PRODUCTS = "main.products";
@@ -26,12 +27,14 @@ public class CatalogViewModel implements Cleanable {
     public ObservableField<Status> status = new ObservableField<>(Status.MINT_FRESH);
     private Subscription productSubscription;
     private CatalogRepository repository;
+    private Listener listener;
 
 
     // == Constructors =============================================================================
 
-    public CatalogViewModel(CatalogRepository repository) {
+    public CatalogViewModel(CatalogRepository repository, Listener listener) {
         this.repository = repository;
+        this.listener = listener;
     }
 
 
@@ -39,6 +42,15 @@ public class CatalogViewModel implements Cleanable {
 
     public void onRefresh() {
         loadProducts(true);
+    }
+
+    @Override
+    public void onProductOverviewClicked(Product product) {
+        Listener listener = this.listener;
+
+        if (listener != null) {
+            listener.onProductOverviewClicked(product);
+        }
     }
 
 
@@ -89,6 +101,8 @@ public class CatalogViewModel implements Cleanable {
         if (productSubscription != null) {
             productSubscription.unsubscribe();
         }
+
+        this.listener = null;
     }
 
 
@@ -112,5 +126,9 @@ public class CatalogViewModel implements Cleanable {
         LOADED,
         FAILED,
         REFRESHING;
+    }
+
+    public interface Listener {
+        void onProductOverviewClicked(Product product);
     }
 }

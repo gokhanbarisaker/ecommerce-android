@@ -40,7 +40,9 @@ public class Application extends android.app.Application {
         client.setWriteTimeout(120, TimeUnit.SECONDS);
         client.setCache(getDiskCache("httpclient"));
 
-        picasso = new Picasso.Builder(this).downloader(new OkHttpDownloader(client)).build();
+        picasso = new Picasso.Builder(this)
+                .downloader(new OkHttpDownloader(client))
+                .build();
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://private-524e0-ecommerce4.apiary-mock.com/")
                 .client(client)
